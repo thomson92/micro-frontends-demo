@@ -1,0 +1,19 @@
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 500px;
+    background-color: #FEFCFD;
+    text-align: center;
+    color: #2e364f;
+}
+
+.title {
+    margin: auto;
+}
+
+.logo {
+    max-width: 200px;
+    height: 200px;
+    margin: auto;
+}

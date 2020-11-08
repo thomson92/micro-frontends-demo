@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp" class="no-js">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Mirco Frontend demo</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="lib/html5-boilerplate/dist/css/normalize.css">
+  <link rel="stylesheet" href="lib/html5-boilerplate/dist/css/main.css">
+  <link rel="stylesheet" href="app.css">
+  <script src="lib/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+  <script src="https://unpkg.com/single-spa"></script>
+
+  <!-- <script type="systemjs-importmap">
+    {
+      "imports": {
+        "angular7": "./angular8/main.js",
+        "angular10": "./angular10/main.js",
+        "@thomson/react-test-app": "./react/thomson-react-test-app.js",
+        "react": "https://cdn.jsdelivr.net/npm/react@16.14.0/umd/react.production.min.js",
+        "react-dom": "https://cdn.jsdelivr.net/npm/react-dom@16.14.0/umd/react-dom.production.min.js",
+        "single-spa": "https://cdnjs.cloudflare.com/ajax/libs/single-spa/4.3.5/system/single-spa.min.js"
+      }
+    }
+  </script> -->
+
+  <!-- --- LOCAL DEV ---  -->
+  <script type="systemjs-importmap">
+    {
+      "imports": {
+        "angular7": "//localhost:4201/main.js",
+        "angular10": "//localhost:4202/main.js",
+        "@thomson/react-test-app": "//localhost:8500/thomson-react-test-app.js",
+        "react": "https://cdn.jsdelivr.net/npm/react@16.14.0/umd/react.production.min.js",
+        "react-dom": "https://cdn.jsdelivr.net/npm/react-dom@16.14.0/umd/react-dom.production.min.js",
+        "single-spa": "https://cdnjs.cloudflare.com/ajax/libs/single-spa/4.3.5/system/single-spa.min.js"
+      }
+    }
+  </script>
+
+  <script src="https://unpkg.com/zone.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/4.0.0/system.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/4.0.0/extras/named-exports.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/systemjs/dist/extras/named-exports.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/4.0.0/extras/named-register.min.js"></script>
+
+  <!-- <script src="https://cdn.jsdelivr.net/npm/import-map-overrides/dist/import-map-overrides.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/systemjs/dist/system.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/systemjs/dist/extras/amd.js"></script>
+
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
+  <script src="lib/angular-route/angular-route.js"></script>
+  <script src="app.js"></script>
+  <script src="single-spa.config.js"></script>
+  <script src="core/version/version.js"></script>
+  <script src="core/version/version-directive.js"></script>
+  <script src="core/version/interpolate-filter.js"></script>
+  <script>
+    System.import('single-spa').then(function (singleSpa) {
+      singleSpa.registerApplication(
+        'angular7',
+        function () {
+          return System.import('angular7');
+        },
+        function (location) {
+          return true;
+        }
+      )
+      singleSpa.registerApplication(
+        '@thomson/react-test-app',
+        function () {
+          return System.import('@thomson/react-test-app');
+        },
+        function (location) {
+          return location.hash.startsWith('#/app3');
+        }
+      )
+
+      singleSpa.registerApplication(
+        'angular10',
+        function () {
+          return System.import('angular10');
+        },
+        function (location) {
+          return location.hash.startsWith('#/app1');
+        }
+      )
+
+      singleSpa.start();
+    })
+  </script>
+</head>
+
+<body>
+  <div id="here"></div>
+
+  <div class="root-wrapper">
+    <h1 style="margin-bottom: 5px;">
+      Root app
+    </h1>
+    <small style="margin-bottom: 15px; display: block;">in Angular js</small>
+
+    <div class="app-wrapper">
+      <div style="width: 100%;" id="single-spa-application:angular7"></div>
+      <div style="width: 100%;" id="single-spa-application:angular10"></div>
+      <div style="width: 100%;" id="single-spa-application:@thomson/react-test-app"></div>
+    </div>
+  </div>
+  <import-map-overrides-full></import-map-overrides-full>
+</body>
+
+</html>
