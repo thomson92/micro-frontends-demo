@@ -1,0 +1,18 @@
+.app-wrapper {
+  padding: 1rem;
+  max-width: 700px;
+  margin: auto;
+}
+.root-wrapper {
+  max-width: 750px;
+  margin: auto;
+  background-color: #2e364f;
+  padding: 1rem;
+  color: white;
+}
+
+body {
+  height: 100vh;
+  display: block;
+  background-color: #2e364f;
+}

@@ -1,0 +1,24 @@
+<div class="nav-bar">
+  <h3 class="nav-bar__item pd-bottom-medium">
+    Hi!
+  </h3>
+  <div class="nav-bar__item pd-bottom-medium">
+    I'm top navigation bar made in Angular 7.
+  </div>
+
+  <div class="btn-container">
+    <button [disabled]="currentActiveApp == 0" [ngClass]="{'active': currentActiveApp == 0}" class="button-element"
+      (click)="appSwitch(0)">
+      Show content 1. (Angular 10)
+    </button>
+
+    <button [disabled]="currentActiveApp == 1" [ngClass]="{'active': currentActiveApp == 1}" class="button-element"
+      (click)="appSwitch(1)">
+      Show content 2. (React)
+    </button>
+
+  </div>
+
+</div>
+
+<router-outlet></router-outlet>

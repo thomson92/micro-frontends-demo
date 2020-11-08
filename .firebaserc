@@ -1,0 +1,17 @@
+{
+  "projects": {
+    "default": "microfrontend-demo-app"
+  },
+  "targets": {
+    "microfrontend-demo-app": {
+      "hosting": {
+        "nav-bar": [
+          "nav-bar"
+        ],
+        "root-app": [
+          "microfrontend-demo-app"
+        ]
+      }
+    }
+  }
+}
